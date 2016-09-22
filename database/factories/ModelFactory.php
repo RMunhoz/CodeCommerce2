@@ -38,5 +38,6 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
         'price' => $faker->randomFloat(4,1,4),
         'featured' => rand(0,1),
         'recommend' => rand(0,1),
+        'category_id' => $faker->numberBetween(1, 15),
     ];
 });

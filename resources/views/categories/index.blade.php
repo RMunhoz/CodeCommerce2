@@ -21,10 +21,13 @@
                 <td>{{$category->description}}</td>
                 <td>
                     <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-default">Edit</a>
-                    <a href="{{ route('categories.destroy', [$category->id]) }}" class="btn btn-default">Destroy</a>
+                    <a href="{{ route('categories.destroy', [$category->id]) }}" class="btn btn-danger">Destroy</a>
                 </td>
             </tr>
             @endforeach
         </table>
+
+        {!! $categories->render() !!}
+
     </div>
 @endsection

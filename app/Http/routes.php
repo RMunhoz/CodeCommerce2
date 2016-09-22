@@ -29,6 +29,11 @@ Route::group(['prefix'=>'admin'], function(){
     Route::group(['prefix'=>'products'], function(){
 
         Route::get('/', ['as'=>'products.index', 'uses'=>'AdminProductsController@index']);
+        Route::get('/create', ['as'=>'products.create', 'uses'=>'AdminProductsController@create']);
+        Route::post('/store', ['as'=>'products.store','uses'=>'AdminProductsController@store']);
+        Route::get('/{id}/destroy', ['as'=>'products.destroy','uses'=>'AdminProductsController@destroy']);
+        Route::get('/{id}/edit', ['as'=>'products.edit','uses'=>'AdminProductsController@edit']);
+        Route::put('/{id}/update', ['as'=>'products.update','uses'=>'AdminProductsController@update']);
 
     });
 
