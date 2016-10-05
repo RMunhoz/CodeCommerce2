@@ -11,9 +11,9 @@
 |
 */
 
-Route::pattern('id', '[0-9]+');
+//Route::pattern('id', '[0-9]+');
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function(){
 
     Route::group(['prefix'=>'categories'], function(){
 
@@ -34,6 +34,11 @@ Route::group(['prefix'=>'admin'], function(){
         Route::get('/{id}/destroy', ['as'=>'products.destroy','uses'=>'AdminProductsController@destroy']);
         Route::get('/{id}/edit', ['as'=>'products.edit','uses'=>'AdminProductsController@edit']);
         Route::put('/{id}/update', ['as'=>'products.update','uses'=>'AdminProductsController@update']);
+
+        Route::get('/{id}/image', ['as'=>'products.image', 'uses'=>'AdminProductsController@images']);
+        Route::get('/{id}/image/create', ['as'=>'products.create.image', 'uses'=>'AdminProductsController@createImage']);
+        Route::post('/{id}/image/store', ['as'=>'products.store.image', 'uses'=>'AdminProductsController@storeImage']);
+        Route::get('/{id}/image/destroy', ['as'=>'products.destroy.image', 'uses'=>'AdminProductsController@destroyImage']);
 
     });
 
