@@ -24,4 +24,20 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+//    public function getNameDescriptionAttribute()
+//    {
+//        return $this->name." - ".$this->description;
+//    }
+
+    public function getTagListAttribute()
+    {
+        $tags = $this->tags->lists('name')->toArray();
+        return implode(', ', $tags);
+    }
 }

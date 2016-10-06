@@ -8,10 +8,10 @@ use CodeCommerce\Http\Requests\ProductImageRequest;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
+use CodeCommerce\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-//use Illuminate\Support\Facades\Request;
 
 class AdminProductsController extends Controller
 {
@@ -45,22 +45,50 @@ class AdminProductsController extends Controller
         $input = $request->all();
         $input['recommend'] = $request->get('recommend') ? true : false;
         $input['featured'] = $request->get('featured') ? true : false;
+        $arrayTags = $this->tagToArray($input['tags']);
         $product = $this->productModel->fill($input);
         $product->save();
+        $product->tags()->sync($arrayTags);
+//        Session::flash('message-success', 'Product, adicionado com sucesso!!!');
         return redirect()->route('products.index');
+    }
+
+    private function tagToArray($tags)
+    {
+        $tags = explode(",", $tags);
+        $tags = array_map('trim', $tags);
+
+        $tagCollection = [];
+        foreach ($tags as $tag) {
+            $t = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tagCollection, $t->id);
+        }
+
+        return $tagCollection;
     }
 
     public function edit($id)
     {
-        $product = $this->productModel->find($id);
         $categories = $this->categoryModel->lists('name', 'id');
-        return view('products.edit', compact('product','categories'));
+        $product = $this->productModel->find($id);
+        $product->tags = $product->tagList;
+        return view('products.edit', compact('categories','product'));
     }
 
     public function update(ProductRequest $request, $id)
     {
-        $this->productModel->find($id)->update($request->all());
-        return redirect()->route('products.index');
+        $input = $request->all();
+        $input['featured'] = $request->get('featured') ? true : false;
+        $input['recommend'] = $request->get('recommend') ? true : false;
+
+        $arrayTags = $this->tagToArray($input['tags']);
+
+        $this->productModel->find($id)->update($input);
+
+        $product = $this->productModel->find($id);
+        $product->tags()->sync($arrayTags);
+//        Session::flash('message-success', 'Product, editado com sucesso!!!');
+        return redirect()->route('products.index');;
     }
 
     public function destroy($id)

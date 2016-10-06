@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Category</h1>
+        <h1>Edit Category {{ $product->name }}</h1>
 
         @if($errors->any())
             <ul class="alert-danger">
@@ -12,35 +12,17 @@
             </ul>
         @endif
 
-        {!! Form::open(['route'=>['products.update', $product->id], 'method'=>'put']) !!}
+        {!! Form::model($product,['route'=>['products.update',$product->id], 'method'=>'put']) !!}
 
-        <div class="form-group">
-            {!! Form::label('category', 'Category') !!}
-            {!! Form::select('category_id', $categories, $product->category->id, ['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', $product->name, ['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('description', 'Description') !!}
-            {!! Form::textarea('description', $product->description, ['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('price', 'Price') !!}
-            {!! Form::number('price', $product->price, ['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('featured', 'Featured') !!}
-            {!! Form::checkbox('featured') !!}
-            {!! Form::label('recommend', 'Recommend') !!}
-            {!! Form::checkbox('recommend') !!}
-        </div>
-        <div class="form-group">
-            {!! Form::submit('Save Product', ['class'=>'btn btn-primary']) !!}
-        </div>
+            @include('products._form')
+
+        {!! Form::submit('Save Product', ['class'=>'btn btn-primary']) !!}
+
+        <a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
 
         {!! Form::close() !!}
+        <br>
+        <br>
 
     </div>
 @endsection
