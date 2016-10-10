@@ -21,7 +21,6 @@ class Tag extends Model
         if($tag){
             return $tag;
         }
-
         return $this->create($tagArray);
     }
 }
