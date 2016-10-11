@@ -20,13 +20,14 @@ class Cart
 
     public function add($id, $name, $price)
     {
-        $this->items + [
+        $this->items += [
             $id => [
                 'qtd' => isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd'] ++ : 1,
                 'name' => $name,
                 'price' => $price
             ]
         ];
+        return $this->items;
     }
 
     public function remove($id)
@@ -48,5 +49,16 @@ class Cart
         return $total;
     }
 
+    public function setQtd($id, $qtd)
+    {
+        if($qtd > 0){
+            $this->items[$id]['qtd'] = $qtd;
+        }
+    }
+
+    public function clear()
+    {
+        $this->items = [];
+    }
 
 }

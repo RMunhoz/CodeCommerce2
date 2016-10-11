@@ -23,6 +23,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $table = 'users';
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
