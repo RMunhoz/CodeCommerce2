@@ -2,6 +2,7 @@
 
 use CodeCommerce\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class UserTableSeeder extends Seeder
         factory(User::class)->create([
             'name' => 'Rogerio Munhoz',
             'email' => 'rogerio_munhoz@hotmail.com.br',
-            'password' => 123456,
+            'password' => Hash::make(123456),
             'remember_token' => str_random(10),
         ]);
-        factory(User::class, 10)->create();
+        factory(User::class, 9)->create();
     }
 }
