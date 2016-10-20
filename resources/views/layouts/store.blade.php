@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +7,7 @@
     <meta name="author" content="">
     <title>Home | E-Shop</title>
 
-
     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
-
 
 </head><!--/head-->
 
@@ -22,8 +19,7 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> (19) 5555-5555</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> atendimento@schoolofnet.com</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -52,10 +48,15 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="http://commerce.dev:10088/cart"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
+                            <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
+                            <ul class="nav navbar-nav navbar-right">
+                                @if (Auth::guest())
+                                    <li><a href="/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                                @else
+                                    <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-lock"></i> Sair ({{ Auth::user()->name }})</a></li>
+                                @endif
+                            </ul>
                         </ul>
                     </div>
                 </div>
@@ -78,17 +79,17 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                </ul>
-                            </li>
+                            {{--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--}}
+                                {{--<ul role="menu" class="sub-menu">--}}
+                                    {{--<li><a href="shop.html">Products</a></li>--}}
+                                    {{--<li><a href="product-details.html">Product Details</a></li>--}}
+                                    {{--<li><a href="checkout.html">Checkout</a></li>--}}
+                                    {{--<li><a href="cart.html">Cart</a></li>--}}
+                                    {{--<li><a href="login.html">Login</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
 
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -126,21 +127,16 @@
 
 <footer id="footer"><!--Footer-->
 
-
-
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © 2013 E-Shop Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://invoinn.com/">InvoInn</a></span></p>
+                <p class="pull-left">Copyright © 2016 E-Shop Inc. All rights reserved.</p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="#">RMunhoz Solutions</a></span></p>
             </div>
         </div>
     </div>
 
 </footer><!--/Footer-->
-
-
 
 <script src="{{ elixir('js/all.js') }}"></script>
 

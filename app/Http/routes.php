@@ -19,8 +19,6 @@ Route::controllers([
 
 ]);
 
-Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
-
 Route::get('home', ['as'=>'home', 'uses'=>'StoreController@index']);
 
 Route::get('/', ['as' => 'store.index', 'uses'=>'StoreController@index']);
@@ -35,6 +33,13 @@ Route::group(['prefix'=>'cart'], function(){
     Route::get('/destroy/{id}',['as'=>'cart.destroy','uses'=>'CartController@destroy']);
     Route::put('/update/{id}',['as'=>'cart.update','uses'=>'CartController@update']);
 
+});
+
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('checkout/placeOrder', ['as'=>'checkout.place', 'uses'=>'CheckoutController@place']);
+    Route::get('account/orders', ['as'=>'account.orders', 'uses'=>'AccountController@orders']);
+    
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth', 'where'=>['id'=>'[0-9]+']], function(){
