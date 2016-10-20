@@ -3,6 +3,7 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
+use CodeCommerce\Events\CheckoutEvent;
 use CodeCommerce\Order;
 use CodeCommerce\OrderItem;
 use CodeCommerce\Product;
@@ -35,6 +36,7 @@ class CheckoutController extends Controller
             }
 
             $cart->clear();
+            event(new CheckoutEvent(Auth::user(), $order));
 
             $categories = Category::all();
             return view('store.checkout', compact('order', 'categories'));
