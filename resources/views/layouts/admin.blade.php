@@ -27,12 +27,9 @@
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="http://www.facebook.com">
-                                    <i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com">
-                                    <i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://plus.google.com">
-                                    <i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,16 +49,11 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{route('account.orders')}}"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-
                             @if (Auth::guest())
                                 <li><a href="/auth/login"><i class="fa fa-lock"></i>Login</a></li>
                             @else
                                 <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-lock"></i>Sair ({{ Auth::user()->name }})</a></li>
                             @endif
-
                         </ul>
                     </div>
                 </div>
@@ -83,18 +75,30 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{route('home')}}" class="active">Home</a></li>
-                            <li><a href="{{route('painel.index')}}">Administração</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                            <li><a href="{{route('painel.index')}}" class="active">Home Admin</a></li>
+                            <li class="dropdown"><a href="{{route('users.index')}}">Users<i
+                                            class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="#">Products</a></li>
-                                    <li><a href="#">Product Details</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="{{route('cart')}}">Cart</a></li>
-                                    <li><a href="/auth/login">Login</a></li>
+                                    <li><a href="{{route('users.index')}}">List</a></li>
+                                    <li><a href="{{route('users.create')}}">New User</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Contact</a></li>
+                            <li class="dropdown"><a href="{{route('categories.index')}}">
+                                    Categories<i
+                                            class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="{{route('categories.index')}}">List</a></li>
+                                    <li><a href="{{route('categories.create')}}">New Category</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="{{route('products.index')}}">Products<i
+                                            class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="{{route('products.index')}}">List</a></li>
+                                    <li><a href="{{route('products.create')}}">New Product</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact-us.html">Contact</a></li>
 
                         </ul>
                     </div>

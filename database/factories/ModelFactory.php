@@ -18,8 +18,15 @@ use CodeCommerce\User;
 $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->safeEmail,
+        'email' => $faker->email,
         'password' => bcrypt(str_random(10)),
+        'cep' => $faker->randomNumber(8),
+        'address' => $faker->address(),
+        'number' => $faker->randomDigitNotNull(),
+        'district' => $faker->streetName(),
+        'city' => $faker->city(),
+        'state' => $faker->state(),
+        'complement' => $faker->secondaryAddress(),
         'remember_token' => str_random(10),
     ];
 });

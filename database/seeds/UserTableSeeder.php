@@ -18,6 +18,14 @@ class UserTableSeeder extends Seeder
             'email' => 'rogerio_munhoz@hotmail.com.br',
             'password' => Hash::make(123456),
             'remember_token' => str_random(10),
+            'is_admin' => 1,
+            'cep' => '19807-625',
+            'address' => 'Rua: Pompeia',
+            'number' => '599',
+            'district' => 'Alvorada',
+            'city' => 'Assis',
+            'state' => 'São Paulo',
+            'complement' => 'Casa',
         ]);
         factory(User::class, 9)->create();
     }

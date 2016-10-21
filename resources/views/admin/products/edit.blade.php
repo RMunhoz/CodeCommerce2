@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -14,9 +14,9 @@
 
         {!! Form::model($product,['route'=>['products.update',$product->id], 'method'=>'put']) !!}
 
-            @include('products._form')
+            @include('admin.products._form')
 
-        {!! Form::submit('Save Product', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Save Product', ['class'=>'btn btn-info']) !!}
 
         <a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
 

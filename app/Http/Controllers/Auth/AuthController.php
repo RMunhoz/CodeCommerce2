@@ -36,7 +36,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -45,13 +45,21 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+//            'is_admin' => 'required',
+            'cep' => 'required',
+            'address' => 'required',
+            'number' => 'required',
+            'district' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'complement' => 'required',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -60,6 +68,16 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'is_admin' => $data['is_admin'],
+            'cep' => $data['cep'],
+            'address' => $data['address'],
+            'number' => $data['number'],
+            'district' => $data['district'],
+            'city' => $data['city'],
+            'state' => $data['state'],
+            'complement' => $data['complement'],
         ]);
+
     }
+
 }

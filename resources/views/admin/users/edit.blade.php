@@ -1,11 +1,11 @@
-@extends('layouts.store')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
+                    <div class="panel-heading"><b>Edit User: {{ $user->name }}</b></div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -18,14 +18,20 @@
                             </div>
                         @endif
 
-                        {!! Form::open(['url'=>'/auth/register', 'method'=>'post']) !!}
 
-                        @include('auth._form')
-
-                        {!! Form::submit('Add Product',['class'=>'btn btn-info']) !!}
-                        <a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
+                        {!! Form::model($user, ['route'=>['users.update', $user->id], 'method' => 'put']) !!}
+                        @include('admin.users._form')
+                        <div class="form-group">
+                            {!! Form::label('is_admin', 'Admin:') !!}
+                            {!! Form::checkbox('is_admin') !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::submit('Save User', ['class'=>'btn btn-info']) !!}
+                            <a href="{{ route('users.index') }}" class='btn btn-default '>Back</a>
+                        </div>
 
                         {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -20,7 +20,7 @@
                 {!! Form::file('image', null,['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Upload Image', ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit('Upload Image', ['class'=>'btn btn-info']) !!}
             </div>
 
         {!! Form::close() !!}

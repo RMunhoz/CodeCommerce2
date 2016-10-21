@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -14,9 +14,9 @@
 
         {!! Form::open(['route'=>'categories.store', 'method'=>'post']) !!}
 
-        @include('categories._form')
+        @include('admin.categories._form')
 
-        {!! Form::submit('Add Category',['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Add Category',['class'=>'btn btn-info']) !!}
 
         <a href="{{ route('categories.index') }}" class="btn btn-default">Voltar</a>
 

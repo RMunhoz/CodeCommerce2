@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -14,13 +14,16 @@
 
         {!! Form::model($category, ['route'=>['categories.update', $category->id],'method'=>'put']) !!}
 
-        @include('categories._form')
+        @include('admin.categories._form')
 
         {!! Form::submit('Save category',['class'=>'btn btn-success']) !!}
 
         <a href="{{ route('categories.index') }}" class="btn btn-default">Voltar</a>
 
         {!! Form::close() !!}
+
+        <br>
+        <br>
 
     </div>
 @endsection
