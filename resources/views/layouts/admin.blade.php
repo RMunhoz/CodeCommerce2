@@ -52,7 +52,8 @@
                             @if (Auth::guest())
                                 <li><a href="/auth/login"><i class="fa fa-lock"></i>Login</a></li>
                             @else
-                                <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-lock"></i>Sair ({{ Auth::user()->name }})</a></li>
+                                <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-lock"></i>Sair
+                                        ({{ Auth::user()->name }})</a></li>
                             @endif
                         </ul>
                     </div>
@@ -66,7 +67,8 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -76,16 +78,10 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{route('painel.index')}}" class="active">Home Admin</a></li>
-                            <li class="dropdown"><a href="{{route('users.index')}}">Users<i
-                                            class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="{{route('users.index')}}">List</a></li>
-                                    <li><a href="{{route('users.create')}}">New User</a></li>
-                                </ul>
-                            </li>
+                            <li class="dropdown"><a href="{{route('users.index')}}">Users</a></li>
+                            <li class="dropdown"><a href="{{route('account.index')}}">Pedidos</a></li>
                             <li class="dropdown"><a href="{{route('categories.index')}}">
-                                    Categories<i
-                                            class="fa fa-angle-down"></i></a>
+                                    Categories<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{route('categories.index')}}">List</a></li>
                                     <li><a href="{{route('categories.create')}}">New Category</a></li>
@@ -98,7 +94,7 @@
                                     <li><a href="{{route('products.create')}}">New Product</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="#">Contact</a></li>
 
                         </ul>
                     </div>
@@ -139,7 +135,8 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © 2016 E-Shop Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://invoinn.com/">InvoInn</a></span></p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://invoinn.com/">InvoInn</a></span>
+                </p>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 @section('content')
     <h1>Users</h1>
 
-    <a href="{{route('users.create')}}" class="btn btn-info">New User</a>
+    <a href="{{ url('/auth/login') }}" class="btn btn-info">New User</a>
     <br>
     <br>
 
@@ -24,8 +24,8 @@
                 <td class="text-center">
                     <a href="{{ route('users.show', ['id'=>$user->id]) }}"
                        class="btn btn-info">Show</a>
-                    <a href="{{ route('users.edit', ['id'=>$user->id]) }}"
-                       class="btn btn-warning">Edit</a>
+                    {{--<a href="{{ route('users.edit', ['id'=>$user->id]) }}"--}}
+                       {{--class="btn btn-warning">Edit</a>--}}
                     <a href="{{ route('users.destroy', ['id'=>$user->id]) }}"
                        class="btn btn-danger">Delete</a>
                 </td>

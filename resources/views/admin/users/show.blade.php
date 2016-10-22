@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Show User: {{ $user->name }}</h1>
+    <h3>{{ $user->name }}</h3>
     <br>
 
     <p><b>Name:</b> {{$user->name}}</p>
@@ -12,7 +12,7 @@
     <p><b>Administrador:</b> {{$user->is_admin ? "Sim" : "Não"}}</p>
 
     <br>
-    <a href="{{ route('users.edit', ['id'=>$user->id]) }}" class='btn btn-info '>Edit</a>
+    {{--<a href="{{ route('users.edit', ['id'=>$user->id]) }}" class='btn btn-info '>Edit</a>--}}
     <a href="{{ route('users.destroy', ['id'=>$user->id]) }}" class='btn btn-danger '>Delete</a>
     <a href="{{ route('users.index') }}" class='btn btn-default '>Back</a>
     <br>

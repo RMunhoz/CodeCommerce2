@@ -45,14 +45,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'where' =>
 
     Route::get('', ['as' => 'painel.index', 'uses' => 'AdminController@index']);
 
+    Route::group(['prefix'=>'account'], function(){
+
+        Route::get('', ['as' => 'account.index', 'uses' => 'AccountController@index']);
+        Route::get('/{id}/edit', ['as' => 'account.edit', 'uses' => 'AccountController@edit']);
+        Route::put('/{id}/update', ['as' => 'account.update', 'uses' => 'AccountController@update']);
+
+    });
+
     Route::group(['prefix' => 'users'], function () {
 
         Route::get('', ['as' => 'users.index', 'uses' => 'AdminUsersController@index']);
         Route::get('{id}/show', ['as' => 'users.show', 'uses' => 'AdminUsersController@show']);
-        Route::get('create', ['as' => 'users.create', 'uses' => 'AdminUsersController@create']);
-        Route::post('store', ['as' => 'users.store', 'uses' => 'AdminUsersController@store']);
-        Route::get('{id}/edit', ['as' => 'users.edit', 'uses' => 'AdminUsersController@edit']);
-        Route::put('{id}/update', ['as' => 'users.update', 'uses' => 'AdminUsersController@update']);
         Route::get('{id}/destroy', ['as' => 'users.destroy', 'uses' => 'AdminUsersController@destroy']);
 
     });

@@ -22,8 +22,8 @@
 
                         @include('auth._form')
 
-                        {!! Form::submit('Add Product',['class'=>'btn btn-info']) !!}
-                        <a href="{{ route('products.index') }}" class="btn btn-default">Voltar</a>
+                        {!! Form::submit('Add User',['class'=>'btn btn-info']) !!}
+                        <a href="{{ route('home') }}" class="btn btn-default">Voltar</a>
 
                         {!! Form::close() !!}
                     </div>
@@ -31,4 +31,6 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 @endsection
