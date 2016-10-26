@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('test', 'CheckoutController@test');
+
 Route::controllers([
 
     'auth' => 'Auth\AuthController',
